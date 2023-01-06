@@ -1,6 +1,8 @@
 const { CityRepository } = require('../repository/index');
 
 const cityRepository = new CityRepository();
+//we can use static method
+
 class CityService {
     // here is a proble we don't have to creat3e and instance when we only want to acess behavioud
     // constructor() {
