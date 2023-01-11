@@ -4,7 +4,18 @@ const fightService = new FlightService();
 
 const create = async(req,res) => {
     try {
-        const flight = await fightService.createFlight(req.body);
+        const flightRequestData = {
+            flightNumber: req.body.flightNumber,
+            airplaneId: req.body.airplaneId,
+            price: req.body.price,
+            arrivalTime: req.body.arrivalTime,
+            departureTime: req.body.departureTime,
+            arrivalAirportId: req.body.arrivalAirportId,
+            departureAirportId: req.body.departureAirportId
+        } 
+        // req.body makes our req bulky so to filter out we use above obj
+        // const flight = await fightService.createFlight(req.body);
+        const flight = await fightService.createFlight(flightRequestData);
         return res.status(201).json({
             data: flight,
             success: true,
