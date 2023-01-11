@@ -5,7 +5,10 @@ const cityService = new CityService();
 
 const create = async (req,res) => {
     try {
-        const city = await cityService.create(req.body);
+        const cityRequestData = {
+            name:req.body.name
+        }
+        const city = await cityService.create(cityRequestData);
         return res.status(SuccessCodes.CREATED).json({
             data: city,
             success: true,
