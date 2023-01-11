@@ -1,11 +1,12 @@
 const { CityService } = require('../services/index');
+const { SuccessCodes } = require('../utils/error-codes');
 
 const cityService = new CityService();
 
 const create = async (req,res) => {
     try {
         const city = await cityService.create(req.body);
-        return res.status(201).json({
+        return res.status(SuccessCodes.CREATED).json({
             data: city,
             success: true,
             message: "successfully created a city",
@@ -25,7 +26,7 @@ const create = async (req,res) => {
 const destroy = async (req,res) => {
     try {
         const resp = await cityService.delete(req.params.id);
-        return res.status(200).json({
+        return res.status(SuccessCodes.OK).json({
             data: resp,
             success: true,
             message: "successfully deleted a city",
@@ -45,7 +46,7 @@ const destroy = async (req,res) => {
 const update = async (req,res) => {
     try {
         const city = await cityService.update(req.params.id, req.body);
-        return res.status(200).json({
+        return res.status(SuccessCodes.OK).json({
             data: city,
             success: true,
             message: "successfully updated a city",
@@ -65,7 +66,7 @@ const update = async (req,res) => {
 const get = async (req,res) => {
     try {
         const city = await cityService.getCity(req.params.id);
-        return res.status(200).json({
+        return res.status(SuccessCodes.OK).json({
             data: city,
             success: true,
             message: "successfully fetched a city",
@@ -85,7 +86,7 @@ const get = async (req,res) => {
 const getAll = async (req,res) => {
     try {
         const cities = await cityService.getAllCities(req.query);
-        return res.status(200).json({
+        return res.status(SuccessCodes.OK).json({
             data: cities,
             success: true,
             message: "successfully fetched all cities",

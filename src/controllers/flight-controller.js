@@ -1,4 +1,5 @@
 const { FlightService } = require('../services/index');
+const { SuccessCodes } = require('../utils/error-codes');
 
 const fightService = new FlightService();
 
@@ -16,7 +17,7 @@ const create = async(req,res) => {
         // req.body makes our req bulky so to filter out we use above obj
         // const flight = await fightService.createFlight(req.body);
         const flight = await fightService.createFlight(flightRequestData);
-        return res.status(201).json({
+        return res.status(SuccessCodes.CREATED).json({
             data: flight,
             success: true,
             message: 'successfully created a flight',
@@ -36,7 +37,7 @@ const create = async(req,res) => {
 const getAll = async(req,res)=>{
     try {
         const flights = await fightService.getAllFlight(req.query);
-        return res.status(201).json({
+        return res.status(SuccessCodes.OK).json({
             data: flights,
             success: true,
             message: 'successfully fetched all flight',
