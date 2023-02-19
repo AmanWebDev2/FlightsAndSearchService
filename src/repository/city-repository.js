@@ -55,6 +55,15 @@ class CityRepository {
         }
     }
 
+    async addCities(arrOfCities) {
+        try {
+            const cities = await City.bulkCreate(arrOfCities);
+            return cities;
+        } catch (error) {
+            console.log('something went wrong in repository layer');
+        }
+    }
+
     async getAllCities(filter) {
         try {
             if(filter.name) {

@@ -9,6 +9,7 @@ const { FlightMiddleware,AirportMiddleware } = require('../../middlewares/index'
 
 router.get('/city/:id',CityController.get);
 router.post('/city',CityController.create);
+router.post('/cities',CityController.addCities);
 router.delete('/city/:id',CityController.destroy);
 router.patch('/city/:id',CityController.update);
 router.get('/city',CityController.getAll);

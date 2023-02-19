@@ -49,6 +49,16 @@ class CityService {
         }
     };
 
+    async addCities(data) {
+        try {
+            const cities = await cityRepository.addCities(data.cities);
+            return cities;
+        } catch (error) {
+            console.log('something went wrong in service layer');
+            throw { error };
+        }
+    }
+
     async getAllCities (filter) {
         try {
             const cities = await cityRepository.getAllCities(filter);
